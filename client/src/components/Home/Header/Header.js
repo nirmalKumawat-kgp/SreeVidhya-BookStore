@@ -59,7 +59,7 @@ export default function Header() {
         <div className="header-1" style={{ position: "relative" }}>
           <a href="/" className="logo">
             {" "}
-            <i className="fas fa-book"></i> bookly{" "}
+            <i className="fas fa-book"></i> SreeVidya{" "}
           </a>
 
           <form action="" className="search-form">
