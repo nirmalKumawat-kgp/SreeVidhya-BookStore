@@ -3,7 +3,7 @@ import { QuantityPicker } from "react-qty-picker";
 import API from "../../baseUrl";
 import "./CartItem.css";
 export default function CartItem({ id }) {
-  const imgSrc = "http://localhost:3006/";
+  const imgSrc = "https://sreevidhyaa.herokuapp.com/";
   const [quantity, setQuantity] = useState(1);
   const [book, setBook] = useState({});
   useEffect(() => {
