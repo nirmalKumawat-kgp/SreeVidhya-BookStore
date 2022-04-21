@@ -6,7 +6,7 @@ import { UserState } from "../UserContext";
 import { handleAddToCart } from "../utils/helpers";
 export default function Book() {
   const { authed } = UserState();
-  const imgSrc = "http://localhost:3006/";
+  const imgSrc = "https://sreevidhyaa.herokuapp.com/";
   const [book, setBook] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
