@@ -83,7 +83,7 @@ export default function Header() {
             <div
               id="login-btn"
               className="fas fa-user"
-              onClick={handleUserClick}
+              onClick={() => handleUserClick()}
             ></div>
           </div>
           {options && (

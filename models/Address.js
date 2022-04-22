@@ -4,19 +4,39 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
         primaryKey: true,
-        notNull: true,
       },
-      Street: {
+      Name: {
+        type: DataTypes.STRING,
+        notNull: false,
+        allowNull: false,
+      },
+      PhoneNumber: {
+        type: DataTypes.STRING,
+        notNull: false,
+        allowNull: false,
+      },
+      AddressLine1: {
+        type: DataTypes.STRING,
+        notNull: false,
+        allowNull: false,
+      },
+      AddressLine2: {
         type: DataTypes.STRING,
         notNull: true,
+        allowNull: true,
       },
-      LandMark: {
+      State: {
         type: DataTypes.STRING,
         notNull: true,
       },
       City: {
+        type: DataTypes.STRING,
+        notNull: true,
+      },
+      Landmark: {
         type: DataTypes.STRING,
         notNull: true,
       },

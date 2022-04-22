@@ -4,10 +4,12 @@ import "../components/Cart/CartItem.css";
 import API from "../baseUrl";
 import { CartState } from "../CartContext";
 import { Backdrop, CircularProgress } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 export default function Cart() {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const {
-    cartDetails,
+    // cartDetails,
     setCartDetails,
     subTotal,
     discount,
@@ -77,6 +79,9 @@ export default function Cart() {
     setDiscount(data.data.discount);
     setTotal(data.data.total);
   };
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
   useEffect(() => {
     fetchItems().then((response) => {
       localStorage.setItem("cartItems", JSON.stringify(response));
@@ -84,6 +89,7 @@ export default function Cart() {
       setCartDetails(response);
     });
     fetchCartCost();
+    //eslint-disable-next-line
   }, []);
   return (
     <div>
@@ -140,6 +146,7 @@ export default function Cart() {
               value="sign in"
               className="btn"
               style={{ width: "80%" }}
+              onClick={() => handleCheckout()}
             >
               Checkout
             </button>

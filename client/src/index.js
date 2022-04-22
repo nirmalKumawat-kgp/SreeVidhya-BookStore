@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import UserContext from "./UserContext";
 import Book from "./pages/Book";
 import CartContext from "./CartContext";
+import Checkout from "./pages/Checkout";
 
 ReactDOM.render(
   <Router>
@@ -33,7 +34,15 @@ ReactDOM.render(
 
             <Route exact path="book/:id" element={<Book />} />
           </Route>
-
+          <Route
+            exact
+            path="checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
           <Route exact path="/auth" element={<Auth />}>
             <Route exact path="signup" element={<SignUp />} />
             <Route exact path="signin" element={<SignIn />} />

@@ -22,6 +22,8 @@ app.use("/api/books", require("./routes/books"));
 
 app.use("/api/cart", require("./routes/cart"));
 
+app.use("/api/order", require("./routes/order"));
+
 app.use("/api", require("./routes/user"));
 
 if (process.env.NODE_ENV == "production") {

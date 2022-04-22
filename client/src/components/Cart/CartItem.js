@@ -1,10 +1,10 @@
-import { Backdrop, Button, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { QuantityPicker } from "react-qty-picker";
 import API from "../../baseUrl";
 import "./CartItem.css";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { CartState } from "../../CartContext";
+// import { CartState } from "../../CartContext";
 
 export default function CartItem({
   id,
@@ -33,6 +33,7 @@ export default function CartItem({
     API.get("books/" + id).then((response) => {
       setBook(response.data.data);
     });
+    //eslint-disable-next-line
   }, []);
   return (
     <div className="cartItem">
