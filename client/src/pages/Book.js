@@ -5,8 +5,14 @@ import API from "../baseUrl";
 import { UserState } from "../UserContext";
 import { handleAddToCart } from "../utils/helpers";
 export default function Book() {
+  let imgSrc;
   const { authed } = UserState();
-  const imgSrc = "https://sreevidhyaa.herokuapp.com/";
+  if (process.env.NODE_ENV === "production") {
+    imgSrc = "https://sreevidhyaa.herokuapp.com/";
+  } else {
+    imgSrc = "http://localhost:3006/";
+  }
+
   const [book, setBook] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();

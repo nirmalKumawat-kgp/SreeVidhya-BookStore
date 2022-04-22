@@ -3,14 +3,18 @@ import API from "../../../baseUrl";
 import "./Arrivals.css";
 import Swiper from "swiper";
 export default function Arrivals() {
-  const imgSrc = "https://sreevidhya.herokuapp.com/";
+  let imgSrc;
+  if (process.env.NODE_ENV === "production") {
+    imgSrc = "https://sreevidhya.herokuapp.com/";
+  } else {
+    imgSrc = "http://localhost:3006/";
+  }
+
   const [books, setBooks] = useState(null);
   useEffect(() => {
-    API.get("https://sreevidhya.herokuapp.com/api/books/getAllBooks").then(
-      (response) => {
-        setBooks(response.data);
-      }
-    );
+    API.get("books/getAllBooks").then((response) => {
+      setBooks(response.data);
+    });
     var swiper = new Swiper(".arrivals-slider", {
       spaceBetween: 10,
       loop: true,

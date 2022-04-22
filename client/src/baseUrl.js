@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const { NODE_ENV, NODE_ENV_DEV } = process.env;
-
-const inDevelopment = NODE_ENV === "development";
-const inProduction = NODE_ENV === "production";
-const inStaging = NODE_ENV_DEV === "staging";
+const { NODE_ENV } = process.env;
 export default axios.create({
-  baseURL: `https://sreevidhya.herokuapp.com/api/`,
+  baseURL:
+    NODE_ENV === "production"
+      ? "https://sreevidhya.herokuapp.com/api/"
+      : "http://localhost:3006/api/",
 });
