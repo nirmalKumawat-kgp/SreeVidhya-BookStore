@@ -5,7 +5,7 @@ import Swiper from "swiper";
 export default function Arrivals() {
   let imgSrc;
   if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhya.herokuapp.com/";
+    imgSrc = "https://sreevidhyaa.herokuapp.com/";
   } else {
     imgSrc = "http://localhost:3006/";
   }
