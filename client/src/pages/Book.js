@@ -87,6 +87,13 @@ export default function Book() {
                   if (authed) {
                     handleAddToCart(book.id).then((response) => {
                       console.log(response);
+                      if (response.success) {
+                        setError("Added To Cart");
+                        setTimeout(() => {
+                          setError("");
+                          navigate("/cart");
+                        }, 1000);
+                      }
                       if (response.error) {
                         setError(response.error);
                         setTimeout(() => {

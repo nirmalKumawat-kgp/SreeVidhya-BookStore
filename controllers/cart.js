@@ -6,10 +6,7 @@ exports.getCart = async (req, res, next) => {
     let cart = await Cart.findOne({ where: { UserId: req.user.id } });
     if (cart) {
       let cartitem = await CartItem.findAll({ where: { CartId: cart.id } });
-      console.log(
-        "🚀 ~ file: cart.js ~ line 9 ~ exports.getCart= ~ cartitem",
-        cartitem
-      );
+
       res.status(200).json({ success: true, data: cartitem });
     }
   } catch (error) {
@@ -35,13 +32,73 @@ exports.addCartItem = async (req, res, next) => {
         quantity: 1,
       });
       await cartitem.save();
-      console.log(
-        "🚀 ~ file: cart.js ~ line 44 ~ exports.addCartItem= ~ cartitem",
-        cartitem
-      );
+      res.status(200).json({ success: true, data: cartitem });
     }
   } catch (error) {
     next(new ErrorResponse(error.message, 400));
   }
 };
-exports.removeCartItem = (req, res, next) => {};
+//remove cart item
+exports.removeCartItem = async (req, res, next) => {
+  const { BookId } = req.params;
+  try {
+    let cartItem = await CartItem.findOne({ where: { BookId: BookId } });
+    if (cartItem) {
+      cartItem.destroy();
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "Item Deleted Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+//update cart item
+exports.updateCartItem = async (req, res, next) => {
+  const { BookId, CartId, quantity } = req.body;
+
+  try {
+    let cartItem = await CartItem.findOne({ where: { BookId: BookId } });
+    if (!cartItem) {
+      next(new ErrorResponse("The Item is not present", 200));
+    }
+    if (cartItem) {
+      await cartItem.update({ quantity: quantity });
+      return res
+        .status(200)
+        .json({ success: true, message: "The item is updated" });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+// to get cost of cart
+exports.getCartCost = async (req, res, next) => {
+  const { id } = req.user;
+  const cart = await Cart.findOne({ where: { UserId: id } });
+  let cost = null;
+  let cartitem = [];
+  if (cart) {
+    cartitem = await CartItem.findAll({ where: { CartId: cart.id } });
+  }
+  let subtotal = 0,
+    discount = 0,
+    total = 0;
+  if (cartitem) {
+    await Promise.all(
+      cartitem.map(async (item, index) => {
+        await Book.findByPk(item.BookId).then((response) => {
+          subtotal += response.originalPrice * item.quantity;
+          discount +=
+            (response.originalPrice - response.discountPrice) * item.quantity;
+          total += response.discountPrice * item.quantity;
+        });
+      })
+    );
+
+    res
+      .status(200)
+      .json({ success: true, data: { subtotal, discount, total } });
+  }
+};

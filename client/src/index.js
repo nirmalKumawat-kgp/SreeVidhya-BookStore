@@ -11,30 +11,35 @@ import Cart from "./pages/Cart";
 import ProtectedRoute from "./ProtectedRoute";
 import UserContext from "./UserContext";
 import Book from "./pages/Book";
+import CartContext from "./CartContext";
 
 ReactDOM.render(
   <Router>
     <UserContext>
-      <Routes>
-        <Route exact path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route
-            exact
-            path="cart"
-            element={
-              <ProtectedRoute>
-                <Cart />
-              </ProtectedRoute>
-            }
-          />
-          <Route exact path="book/:id" element={<Book />} />
-        </Route>
+      <CartContext>
+        <Routes>
+          <Route exact path="/" element={<App />}>
+            <Route index element={<Home />} />
 
-        <Route exact path="/auth" element={<Auth />}>
-          <Route exact path="signup" element={<SignUp />} />
-          <Route exact path="signin" element={<SignIn />} />
-        </Route>
-      </Routes>
+            <Route
+              exact
+              path="cart"
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route exact path="book/:id" element={<Book />} />
+          </Route>
+
+          <Route exact path="/auth" element={<Auth />}>
+            <Route exact path="signup" element={<SignUp />} />
+            <Route exact path="signin" element={<SignIn />} />
+          </Route>
+        </Routes>
+      </CartContext>
     </UserContext>
   </Router>,
   document.getElementById("root")
