@@ -1,20 +1,20 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "db.sqlite",
-    "logging": false,
-    "dialectOptions": {}
-  },
-  "test": {
-    "dialect": "sqlite",
-    "storage": "db.sqlite",
-    "logging": false,
-    "dialectOptions": {}
+    "username": "postgres",
+    "password": "nirmal7587",
+    "database": "userDB",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
   },
   "production": {
-    "dialect": "sqlite",
-    "storage": "db.sqlite",
-    "logging": false,
-    "dialectOptions": {}
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
