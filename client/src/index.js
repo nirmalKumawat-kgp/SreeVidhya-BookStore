@@ -31,18 +31,18 @@ ReactDOM.render(
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              exact
+              path="checkout"
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              }
+            />
             <Route exact path="book/:id" element={<Book />} />
           </Route>
-          <Route
-            exact
-            path="checkout"
-            element={
-              <ProtectedRoute>
-                <Checkout />
-              </ProtectedRoute>
-            }
-          />
+
           <Route exact path="/auth" element={<Auth />}>
             <Route exact path="signup" element={<SignUp />} />
             <Route exact path="signin" element={<SignIn />} />
