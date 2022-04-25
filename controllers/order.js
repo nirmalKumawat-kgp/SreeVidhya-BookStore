@@ -35,6 +35,6 @@ exports.getAllOrders = async (req, res, next) => {
 
     await res.status(200).json({ success: true, data: customerOrders });
   } catch (error) {
-    nezt(error);
+    next(error);
   }
 };

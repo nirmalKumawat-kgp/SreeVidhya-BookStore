@@ -1,0 +1,33 @@
+.cartContainer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1rem;
+}
+.checkoutSection {
+  min-width: 25%;
+  font-size: 2rem;
+  padding: 2rem;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+  border-radius: 1rem;
+}
+@media screen and (max-width: 480px) {
+  .cartContainer {
+    flex-direction: column;
+  }
+  .itemsContainer {
+    width: 100%;
+  }
+  .checkoutSection {
+    width: 100%;
+  }
+}

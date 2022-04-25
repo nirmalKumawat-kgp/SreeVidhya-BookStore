@@ -8,6 +8,7 @@
   border-radius: 1rem;
 }
 .cartItem .itemInfo {
+  max-width: 100vw;
   width: 100%;
   padding: 1rem;
   position: relative;
@@ -38,14 +39,24 @@
   width: 20rem;
   height: min-content;
 }
-.totalCost {
-  min-width: 25%;
-  font-size: 2rem;
-  padding: 2rem;
-}
-.row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1.25rem;
-  border-radius: 1rem;
+@media screen and (max-width: 480px) {
+  .cartItem {
+    flex-direction: column;
+    max-width: 100vw;
+  }
+  .itemImage {
+    max-width: 100vw;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+  }
+  .cartItem .itemDescription {
+    flex-direction: column;
+    max-width: 100vw;
+    align-items: flex-start;
+  }
+  .cartItem .itemImage img {
+    max-width: 80vw;
+    height: auto;
+  }
 }

@@ -48,7 +48,7 @@ export default function Arrivals() {
           <div class="swiper-wrapper">
             {books &&
               books
-                .filter((item) => item.category === "new arrivals")
+                .filter((item) => item.BookCategoryId === 1)
                 .map((book, index) => {
                   return (
                     <a
@@ -61,7 +61,11 @@ export default function Arrivals() {
                         <img
                           src={imgSrc + book.bookImage}
                           alt=""
-                          style={{ width: "90%", padding: "0rem 0.5rem" }}
+                          style={{
+                            width: "90%",
+                            padding: "0rem 0.5rem",
+                            height: "100%",
+                          }}
                         />
                       </div>
                       <div class="content">

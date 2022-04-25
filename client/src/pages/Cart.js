@@ -5,6 +5,7 @@ import API from "../baseUrl";
 import { CartState } from "../CartContext";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Styles from "./Cart.module.css";
 export default function Cart() {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -91,24 +92,12 @@ export default function Cart() {
     fetchCartCost();
     //eslint-disable-next-line
   }, []);
+
   return (
     <div>
       <h2 style={{ fontSize: "3rem", textAlign: "center" }}> Cart</h2>
-      <div
-        style={{
-          padding: "2rem",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexGrow: 1,
-            padding: "1rem",
-          }}
-        >
+      <div className={Styles.cartContainer}>
+        <div className={Styles.itemsContainer}>
           {loading ? (
             <Backdrop open={loading}>
               <CircularProgress color="inherit" />
@@ -127,16 +116,16 @@ export default function Cart() {
             })
           )}
         </div>
-        <div className="totalCost">
-          <div className="row">
+        <div className={Styles.checkoutSection}>
+          <div className={Styles.row}>
             <p>SubTotal</p>
             <p>{subTotal}</p>
           </div>
-          <div className="row">
+          <div className={Styles.row}>
             <p>Discount</p>
             <p>{discount.toFixed(2)}</p>
           </div>
-          <div className="row" style={{ backgroundColor: "#eee" }}>
+          <div className={Styles.row} style={{ backgroundColor: "#eee" }}>
             <p>Total</p>
             <p>{total.toFixed(2)}</p>
           </div>

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import API from "../baseUrl";
 import { UserState } from "../UserContext";
 import { handleAddToCart } from "../utils/helpers";
+import Styles from "./Book.module.css";
 export default function Book() {
   let imgSrc;
   const { authed } = UserState();
@@ -22,21 +23,17 @@ export default function Book() {
   }, []);
 
   return (
-    <div style={{ display: "flex", padding: "2rem" }}>
+    <div className={Styles.bookContainer}>
       {book && (
         <>
-          <div style={{ width: "50%" }}>
-            <img
-              style={{ maxWidth: "100%" }}
-              src={imgSrc + book.bookImage}
-              alt={`${book.name}`}
-            />
+          <div className={Styles.imageContainer}>
+            <img src={imgSrc + book.bookImage} alt={`${book.name}`} />
           </div>
-          <div style={{ width: "50%", padding: "0rem 2rem" }}>
+          <div className={Styles.content}>
             <Typography variant="h2">{book.name}</Typography>
             <blockquote style={{ color: "rgba(0,0,0,0.7)" }}>
               {" "}
-              <Typography variant="h5" style={{ fontWeight: "400" }}>
+              <Typography variant="h5" className={Styles.author}>
                 By - &nbsp;{book.author}
               </Typography>
             </blockquote>
@@ -81,8 +78,7 @@ export default function Book() {
               <button
                 type="submit"
                 value="sign in"
-                className="btn"
-                style={{ width: "50%" }}
+                className={`btn ${Styles.button}`}
                 onClick={() => {
                   if (authed) {
                     handleAddToCart(book.id).then((response) => {
@@ -119,14 +115,6 @@ export default function Book() {
                   {error}
                 </Alert>
               )}
-              <button
-                type="submit"
-                value="sign in"
-                className="btn"
-                style={{ width: "50%" }}
-              >
-                Buy Now
-              </button>
             </Box>
           </div>
         </>

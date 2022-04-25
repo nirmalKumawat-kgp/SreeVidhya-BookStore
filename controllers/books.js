@@ -90,9 +90,12 @@ exports.addBookCategory = async (req, res, next) => {
 exports.updateBook = async (req, res, next) => {
   const id = req.params.id;
   const { ...updatedValues } = req.body;
-
+  if (updatedValues.isImageChanged) {
+    updatedValues.bookImage = req.file.path;
+  }
   try {
     const book = await Book.findByPk(id);
+
     if (!book) {
       next(new ErrorResponse("No Book Was Found", 404));
     }
