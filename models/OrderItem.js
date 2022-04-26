@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notEmpty: true,
         },
-        defaultValue: 0,
       },
     },
     {
