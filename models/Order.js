@@ -8,7 +8,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
+      values: [
+        "Scheduled for Shipping",
+        "In Transit",
+        "Out For Delivery",
+        "Delivered",
+      ],
       allowNull: false,
       notNull: true,
       defaultValue: "Scheduled For Pickup",

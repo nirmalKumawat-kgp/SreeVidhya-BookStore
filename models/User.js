@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
+        unique: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
           isEmail: {
             msg: "Must be a valid email address",
@@ -34,13 +36,6 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          notEmpty: true,
-          min: {
-            args: [6],
-            msg: "Minimum 6 characters required as password",
-          },
-        },
       },
       role: {
         type: DataTypes.ENUM,

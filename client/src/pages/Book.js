@@ -9,9 +9,9 @@ export default function Book() {
   let imgSrc;
   const { authed } = UserState();
   if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com/";
+    imgSrc = "https://sreevidhyaa.herokuapp.com";
   } else {
-    imgSrc = "http://localhost:3006/";
+    imgSrc = "http://localhost:3006";
   }
 
   const [book, setBook] = useState(null);

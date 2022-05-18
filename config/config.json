@@ -1,11 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "nirmal7587",
-    "database": "userDB",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "logging": false
+    "dialect": "sqlite",
+    "storage": "db.sqlite",
+    "logging": false,
+    "dialectOptions": {}
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
