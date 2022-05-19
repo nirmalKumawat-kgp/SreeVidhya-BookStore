@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
+
 import "./App.css";
+import "swiper/css/bundle";
 import Header from "./components/Home/Header/Header";
 function App() {
   // window.onload = () => {

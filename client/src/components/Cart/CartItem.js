@@ -14,9 +14,9 @@ export default function CartItem({
 }) {
   let imgSrc;
   if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com/";
+    imgSrc = "https://sreevidhyaa.herokuapp.com";
   } else {
-    imgSrc = "http://localhost:3006/";
+    imgSrc = "http://localhost:3006";
   }
 
   const [quantity, setQuantity] = useState(itemQuantity);

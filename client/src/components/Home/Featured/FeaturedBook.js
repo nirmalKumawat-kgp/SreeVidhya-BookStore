@@ -34,8 +34,8 @@ export default function FeaturedBook({
       <div class="content">
         <h3>{name}</h3>
         <div class="price">
-          {discountPrice}
-          <span>{originalPrice}</span>
+          <span>₹{discountPrice}</span>
+          <span>₹{originalPrice}</span>
         </div>
         <button
           class="btn"

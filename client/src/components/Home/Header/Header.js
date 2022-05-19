@@ -9,33 +9,11 @@ export default function Header() {
   const navigate = useNavigate();
   const [options, setOptions] = useState(false);
 
-  // const [error, setError] = useState("");
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { data } = await API.post("auth/login", {
-  //       email: username,
-  //       password: password,
-  //     });
-  //     console.log(data);
-  //     localStorage.setItem("authToken", data.token);
-  //   } catch (error) {
-  //     setError(error.response.data.error);
-  //   }
-  // };
-  // const handleUserClick = () => {
-  //   setLoginClick("login-form-container active");
-  // };
-
   window.onscroll = () => {
     if (window.scrollY > 80) {
-      console.log("Hi");
-      // document.querySelector(".header .header-2").classNameList.add("active");
+      document.querySelector(".header .header-2").classList.add("active");
     } else {
-      // document
-      //   .querySelector(".header .header-2")
-      //   .classNameList.remove("active");
+      document.querySelector(".header .header-2").classList.remove("active");
     }
   };
   const handleUserClick = () => {

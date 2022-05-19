@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import API from "../../../baseUrl";
 
 import "./Featured.css";
-import Swiper from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import required modules
+import { Pagination, Navigation, Autoplay } from "swiper";
+// import Swiper from "swiper";
 import FeaturedBook from "./FeaturedBook";
 export default function Featured() {
   let imgSrc;
@@ -12,44 +16,12 @@ export default function Featured() {
     imgSrc = "http://localhost:3006";
   }
   const [books, setBooks] = useState(null);
-  const [clicks, setClicks] = useState(0);
-
-  const handleChange = () => {
-    setClicks((prevclicks) => prevclicks + 1);
-  };
 
   useEffect(() => {
     API.get("books/getAllBooks").then((response) => {
       setBooks(response.data);
     });
-    var swiper = new Swiper(".featured-slider", {
-      spaceBetween: 10,
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 9500,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        450: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-        1024: {
-          slidesPerView: 4,
-        },
-      },
-    });
-  }, [clicks]);
+  }, []);
   return (
     <div>
       <section class="featured" id="featured">
@@ -58,25 +30,46 @@ export default function Featured() {
         </h1>
 
         <div class="swiper featured-slider">
-          <div class="swiper-wrapper">
+          <Swiper
+            spaceBetween={10}
+            loop={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            loopFillGroupWithBlank={true}
+            navigation={true}
+            modules={[Navigation, Autoplay]}
+            className="mySwiper"
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              450: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
             {books &&
               books
                 .filter((item) => item.BookCategoryId === 2)
                 .map((book) => {
                   return (
-                    <FeaturedBook
-                      id={book.id}
-                      discountPrice={book.discountPrice}
-                      originalPrice={book.originalPrice}
-                      name={book.name}
-                      imageSrc={imgSrc + book.bookImage}
-                    />
+                    <SwiperSlide>
+                      <FeaturedBook
+                        id={book.id}
+                        discountPrice={book.discountPrice}
+                        originalPrice={book.originalPrice}
+                        name={book.name}
+                        imageSrc={imgSrc + book.bookImage}
+                      />
+                    </SwiperSlide>
                   );
                 })}
-          </div>
-
-          <div class="swiper-button-next" onClick={() => handleChange}></div>
-          <div class="swiper-button-prev" onClick={() => handleChange}></div>
+          </Swiper>
         </div>
       </section>
     </div>

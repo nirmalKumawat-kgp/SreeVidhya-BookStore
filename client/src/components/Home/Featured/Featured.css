@@ -59,34 +59,14 @@
   color: var(--black);
 }
 
-.featured .featured-slider .box .content .price {
+.featured .featured-slider .box .content .price span:nth-of-type(1) {
   font-size: 2.2rem;
-  color: var(--black);
+  color: rgba(255, 0, 0, 0.8);
   padding-top: 1rem;
 }
 
-.featured .featured-slider .box .content .price span {
+.featured .featured-slider .box .content .price span:nth-of-type(2) {
   font-size: 1.5rem;
   color: var(--light-color);
   text-decoration: line-through;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  border: var(--border-hover);
-  height: 4rem;
-  width: 4rem;
-  color: var(--black);
-  background: #fff;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 2rem;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: var(--black);
-  color: #fff;
 }
