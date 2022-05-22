@@ -4,8 +4,7 @@ module.exports = {
   options: {
     properties: {},
     actions: {
-      list: { isAccessible: false },
+      list: { isAccessible: true },
     },
   },
-  
 };
