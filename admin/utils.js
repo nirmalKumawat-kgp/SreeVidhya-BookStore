@@ -23,7 +23,7 @@ async function authenticate(email, password) {
   });
   if (userRecord) {
     const matched = await bcrypt.compare(password, userRecord.password);
-    if (matched) {
+    if (matched && userRecord.role === "admin") {
       return userRecord;
     }
   }

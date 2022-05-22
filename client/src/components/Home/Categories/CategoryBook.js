@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { UserState } from "../../../UserContext";
 import { handleAddToCart } from "../../../utils/helpers";
 import { Alert } from "@mui/material";
-import "./Featured.css";
-export default function FeaturedBook({
+import "./CategoryBook.css";
+export default function CategoryBook({
   id,
   name,
   discountPrice,
