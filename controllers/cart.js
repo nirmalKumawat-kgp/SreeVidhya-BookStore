@@ -23,6 +23,7 @@ exports.addCartItem = async (req, res, next) => {
       let cartitem = await CartItem.findOne({
         where: { CartId: cart.id, BookId: req.body.BookId },
       });
+
       if (cartitem) {
         return next(new ErrorResponse("Already Added to Cart", 200));
       }
@@ -31,6 +32,7 @@ exports.addCartItem = async (req, res, next) => {
         CartId: cart.id,
         quantity: 1,
       });
+      console.log(cartitem);
       await cartitem.save();
       res.status(200).json({ success: true, data: cartitem });
     }

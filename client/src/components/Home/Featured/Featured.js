@@ -9,12 +9,6 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 // import Swiper from "swiper";
 import FeaturedBook from "./FeaturedBook";
 export default function Featured() {
-  let imgSrc;
-  if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com";
-  } else {
-    imgSrc = "http://localhost:3006";
-  }
   const [books, setBooks] = useState(null);
 
   useEffect(() => {
@@ -64,7 +58,7 @@ export default function Featured() {
                         discountPrice={book.discountPrice}
                         originalPrice={book.originalPrice}
                         name={book.name}
-                        imageSrc={imgSrc + book.bookImage}
+                        imageSrc={book.bookImage}
                       />
                     </SwiperSlide>
                   );

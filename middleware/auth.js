@@ -12,6 +12,7 @@ exports.isAuth = async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(" ")[1];
   }
+
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const user = await User.findByPk(decodedToken.id);

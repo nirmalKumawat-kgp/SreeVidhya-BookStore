@@ -12,13 +12,6 @@ export default function CartItem({
   quantity: itemQuantity,
   handleDelete,
 }) {
-  let imgSrc;
-  if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com";
-  } else {
-    imgSrc = "http://localhost:3006";
-  }
-
   const [quantity, setQuantity] = useState(itemQuantity);
 
   const [book, setBook] = useState({});
@@ -40,7 +33,7 @@ export default function CartItem({
       {book && (
         <>
           <div className="itemImage">
-            <img src={imgSrc + book.bookImage} alt="item" />
+            <img src={book.bookImage} alt="item" />
           </div>
           <div className="itemInfo">
             <div className="itemDescription">

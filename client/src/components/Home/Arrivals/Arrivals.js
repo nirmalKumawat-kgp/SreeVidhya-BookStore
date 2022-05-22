@@ -3,13 +3,6 @@ import API from "../../../baseUrl";
 import "./Arrivals.css";
 import Swiper from "swiper";
 export default function Arrivals() {
-  let imgSrc;
-  if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com";
-  } else {
-    imgSrc = "http://localhost:3006";
-  }
-
   const [books, setBooks] = useState(null);
   useEffect(() => {
     API.get("books/getAllBooks").then((response) => {
@@ -59,7 +52,7 @@ export default function Arrivals() {
                     >
                       <div class="image" style={{ width: "50%" }}>
                         <img
-                          src={imgSrc + book.bookImage}
+                          src={book.bookImage}
                           alt=""
                           style={{
                             width: "90%",

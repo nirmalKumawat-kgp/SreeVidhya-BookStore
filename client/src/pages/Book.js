@@ -6,13 +6,7 @@ import { UserState } from "../UserContext";
 import { handleAddToCart } from "../utils/helpers";
 import Styles from "./Book.module.css";
 export default function Book() {
-  let imgSrc;
   const { authed } = UserState();
-  if (process.env.NODE_ENV === "production") {
-    imgSrc = "https://sreevidhyaa.herokuapp.com";
-  } else {
-    imgSrc = "http://localhost:3006";
-  }
 
   const [book, setBook] = useState(null);
   const { id } = useParams();
@@ -20,6 +14,8 @@ export default function Book() {
   const [error, setError] = useState("");
   useEffect(() => {
     API.get("books/" + id).then((response) => setBook(response.data.data));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -27,7 +23,7 @@ export default function Book() {
       {book && (
         <>
           <div className={Styles.imageContainer}>
-            <img src={imgSrc + book.bookImage} alt={`${book.name}`} />
+            <img src={book.bookImage} alt={`${book.name}`} />
           </div>
           <div className={Styles.content}>
             <Typography variant="h2">{book.name}</Typography>
