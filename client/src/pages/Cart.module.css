@@ -20,6 +20,9 @@
   padding: 0.5rem 1.25rem;
   border-radius: 1rem;
 }
+.noItems {
+  font-size: 2rem;
+}
 @media screen and (max-width: 480px) {
   .cartContainer {
     flex-direction: column;

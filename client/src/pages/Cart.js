@@ -97,50 +97,56 @@ export default function Cart() {
     <div>
       <h2 style={{ fontSize: "3rem", textAlign: "center" }}> Cart</h2>
       <div className={Styles.cartContainer}>
-        <div className={Styles.itemsContainer}>
-          {loading ? (
-            <Backdrop open={loading}>
-              <CircularProgress color="inherit" />
-            </Backdrop>
-          ) : (
-            cartItems?.map((item, index) => {
-              return (
-                <CartItem
-                  id={item.BookId}
-                  key={index}
-                  handleItemQuantity={handleQuantity}
-                  quantity={item.quantity}
-                  handleDelete={handleDelete}
-                />
-              );
-            })
-          )}
-        </div>
-        <div className={Styles.checkoutSection}>
-          <div className={Styles.row}>
-            <p>SubTotal</p>
-            <p>{subTotal}</p>
-          </div>
-          <div className={Styles.row}>
-            <p>Discount</p>
-            <p>{discount.toFixed(2)}</p>
-          </div>
-          <div className={Styles.row} style={{ backgroundColor: "#eee" }}>
-            <p>Total</p>
-            <p>{total.toFixed(2)}</p>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <button
-              type="submit"
-              value="sign in"
-              className="btn"
-              style={{ width: "80%" }}
-              onClick={() => handleCheckout()}
-            >
-              Checkout
-            </button>
-          </div>
-        </div>
+        {cartItems.length ? (
+          <>
+            <div className={Styles.itemsContainer}>
+              {loading ? (
+                <Backdrop open={loading}>
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              ) : (
+                cartItems?.map((item, index) => {
+                  return (
+                    <CartItem
+                      id={item.BookId}
+                      key={index}
+                      handleItemQuantity={handleQuantity}
+                      quantity={item.quantity}
+                      handleDelete={handleDelete}
+                    />
+                  );
+                })
+              )}
+            </div>
+            <div className={Styles.checkoutSection}>
+              <div className={Styles.row}>
+                <p>SubTotal</p>
+                <p>{subTotal}</p>
+              </div>
+              <div className={Styles.row}>
+                <p>Discount</p>
+                <p>{discount.toFixed(2)}</p>
+              </div>
+              <div className={Styles.row} style={{ backgroundColor: "#eee" }}>
+                <p>Total</p>
+                <p>{total.toFixed(2)}</p>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  value="sign in"
+                  className="btn"
+                  style={{ width: "80%" }}
+                  onClick={() => handleCheckout()}
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <p className={Styles.noItems}>No Items Added to Cart</p>
+        )}
       </div>
     </div>
   );
