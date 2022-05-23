@@ -6,7 +6,9 @@ export default function WrapperComponent({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
   }, []);
   return (
     <div>
