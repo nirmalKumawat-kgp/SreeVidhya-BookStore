@@ -7,7 +7,7 @@ import "./CategoryBook.css";
 export default function CategoryItem({ category, books }) {
   return (
     <div>
-      {books.length && (
+      {books.length ? (
         <section className="featured" id="featured">
           <h1 className="heading">
             <span>
@@ -57,6 +57,8 @@ export default function CategoryItem({ category, books }) {
             </Swiper>
           </div>
         </section>
+      ) : (
+        ""
       )}
     </div>
   );
