@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import API from "../baseUrl";
-import { UserState } from "../UserContext";
 import { useNavigate } from "react-router-dom";
+import API from "../baseUrl";
+import WrapperComponent from "../components/WrapperComponent";
+import { UserState } from "../UserContext";
 
 export default function SignUp() {
+  document.title = "Sign | SreeVidhya BookStore";
+
   const { setAuthed, authed } = UserState();
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -38,53 +41,55 @@ export default function SignUp() {
   };
 
   return (
-    <div className="login-form-container active">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <h3>Sign Up</h3>
-        {error && (
-          <span style={{ color: "red", textAlign: "center" }}>{error}</span>
-        )}
-        <span>Name</span>
-        <input
-          type="text"
-          name="name"
-          className="box"
-          placeholder="Enter your Full Name"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <span>Username</span>
-        <input
-          type="email"
-          name="email"
-          className="box"
-          placeholder="Enter your email"
-          id="email"
-          required
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <span>Password</span>
-        <input
-          type="password"
-          name="password"
-          className="box"
-          placeholder="Enter your password"
-          id="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="sign up" className="btn" />
-        <p>
-          forget password ? <a href="/forgotpassword">click here</a>
-        </p>
-        <p>
-          Already have an Account ? <a href="/auth/signin">Sign In</a>
-        </p>
-      </form>
-    </div>
+    <WrapperComponent>
+      <div className="login-form-container active">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <h3>Sign Up</h3>
+          {error && (
+            <span style={{ color: "red", textAlign: "center" }}>{error}</span>
+          )}
+          <span>Name</span>
+          <input
+            type="text"
+            name="name"
+            className="box"
+            placeholder="Enter your Full Name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <span>Username</span>
+          <input
+            type="email"
+            name="email"
+            className="box"
+            placeholder="Enter your email"
+            id="email"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <span>Password</span>
+          <input
+            type="password"
+            name="password"
+            className="box"
+            placeholder="Enter your password"
+            id="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input type="submit" value="sign up" className="btn" />
+          <p>
+            forget password ? <a href="/forgotpassword">click here</a>
+          </p>
+          <p>
+            Already have an Account ? <a href="/auth/signin">Sign In</a>
+          </p>
+        </form>
+      </div>
+    </WrapperComponent>
   );
 }

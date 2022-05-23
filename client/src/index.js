@@ -1,18 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
-import Home from "./pages/Home";
+import CartContext from "./CartContext";
 import Auth from "./pages/Auth";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
+import Book from "./pages/Book";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import UserContext from "./UserContext";
-import Book from "./pages/Book";
-import CartContext from "./CartContext";
-import Checkout from "./pages/Checkout";
 
 ReactDOM.render(
   <Router>

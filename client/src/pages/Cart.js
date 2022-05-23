@@ -6,7 +6,9 @@ import { CartState } from "../CartContext";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Styles from "./Cart.module.css";
+import WrapperComponent from "../components/WrapperComponent";
 export default function Cart() {
+  document.title = "Cart | SreeVidhya BookStore";
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const {
@@ -19,7 +21,7 @@ export default function Cart() {
     total,
     setTotal,
   } = CartState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("authToken");
   const config = {
@@ -88,13 +90,14 @@ export default function Cart() {
       localStorage.setItem("cartItems", JSON.stringify(response));
       setCartItems(response);
       setCartDetails(response);
+      setLoading(false);
     });
     fetchCartCost();
     //eslint-disable-next-line
   }, []);
 
   return (
-    <div>
+    <WrapperComponent>
       <h2 style={{ fontSize: "3rem", textAlign: "center" }}> Cart</h2>
       <div className={Styles.cartContainer}>
         {cartItems.length ? (
@@ -148,6 +151,6 @@ export default function Cart() {
           <p className={Styles.noItems}>No Items Added to Cart</p>
         )}
       </div>
-    </div>
+    </WrapperComponent>
   );
 }

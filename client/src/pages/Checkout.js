@@ -18,6 +18,7 @@ import {
 import AddressForm from "../components/Checkout/AddressForm";
 import Review from "../components/Checkout/Review";
 import { useNavigate } from "react-router-dom";
+import WrapperComponent from "../components/WrapperComponent";
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -98,63 +99,65 @@ export default function Checkout() {
     }, 3000);
   }
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography
-            variant="h4"
-            color="inherit"
-            noWrap
-            onClick={() => navigate("/")}
-            style={{ pointer: "cursor" }}
-          >
-            SreeVidya{" "}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+    <WrapperComponent>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppBar
+          position="absolute"
+          color="default"
+          elevation={0}
+          sx={{
+            position: "relative",
+            borderBottom: (t) => `1px solid ${t.palette.divider}`,
+          }}
         >
-          <Typography component="h1" variant="h3" align="center">
-            Checkout
-          </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel className="stepLabel">{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is {orderId && orderId}. We have emailed
-                  your order confirmation, and will send you an update when your
-                  order has shipped.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>{getStepContent(activeStep)}</React.Fragment>
-            )}
-          </React.Fragment>
-        </Paper>
-        <Copyright />
-      </Container>
-    </ThemeProvider>
+          <Toolbar>
+            <Typography
+              variant="h4"
+              color="inherit"
+              noWrap
+              onClick={() => navigate("/")}
+              style={{ pointer: "cursor" }}
+            >
+              SreeVidya{" "}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+          <Paper
+            variant="outlined"
+            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+          >
+            <Typography component="h1" variant="h3" align="center">
+              Checkout
+            </Typography>
+            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel className="stepLabel">{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <React.Fragment>
+              {activeStep === steps.length ? (
+                <React.Fragment>
+                  <Typography variant="h5" gutterBottom>
+                    Thank you for your order.
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Your order number is {orderId && orderId}. We have emailed
+                    your order confirmation, and will send you an update when
+                    your order has shipped.
+                  </Typography>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>{getStepContent(activeStep)}</React.Fragment>
+              )}
+            </React.Fragment>
+          </Paper>
+          <Copyright />
+        </Container>
+      </ThemeProvider>
+    </WrapperComponent>
   );
 }

@@ -5,10 +5,11 @@ import { useLocation } from "react-router-dom";
 
 export default function PrivateRoute({ children }) {
   const { authed } = UserState();
+  console.log(authed);
   const location = useLocation();
   return authed ? (
     children
   ) : (
-    <Navigate to="/auth/signin" replace state={{ path: location.pathname }} />
+    <Navigate to="/auth/signin" state={{ path: location.pathname }} />
   );
 }

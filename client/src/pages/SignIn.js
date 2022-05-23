@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import API from "../baseUrl";
-import { useNavigate } from "react-router-dom";
+import WrapperComponent from "../components/WrapperComponent";
 import { UserState } from "../UserContext";
-import { useLocation } from "react-router-dom";
 
 export default function SignIn() {
+  document.title = "Sign | SreeVidhya BookStore";
+
   const { setAuthed, authed } = UserState();
   const { state } = useLocation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  console.log(state);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -42,7 +44,7 @@ export default function SignIn() {
     }
   });
   return (
-    <div>
+    <WrapperComponent>
       <div className="login-form-container active">
         <form onSubmit={handleSubmit}>
           <h3>Sign In</h3>
@@ -80,6 +82,6 @@ export default function SignIn() {
           </p>
         </form>
       </div>
-    </div>
+    </WrapperComponent>
   );
 }

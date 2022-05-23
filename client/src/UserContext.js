@@ -9,7 +9,7 @@ export default function UserContext({ children }) {
   // const [user, setUser] = useState(null);
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
+
     const fetchUser = async () => {
       const config = {
         headers: {
@@ -24,15 +24,12 @@ export default function UserContext({ children }) {
         }
       } catch (error) {
         setAuthed(false);
-        navigate("/auth/signin");
-        console.log(error);
       }
     };
 
     if (token) {
       fetchUser();
       console.log(authed);
-      // const data = user;
     }
     //eslint-disable-next-line
   }, []);
