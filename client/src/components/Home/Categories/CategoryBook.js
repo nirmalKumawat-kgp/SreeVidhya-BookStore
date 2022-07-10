@@ -4,6 +4,8 @@ import { UserState } from "../../../UserContext";
 import { handleAddToCart } from "../../../utils/helpers";
 import { Alert } from "@mui/material";
 import "./CategoryBook.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function CategoryBook({
   id,
   name,
@@ -29,7 +31,7 @@ export default function CategoryBook({
         }}
         style={{ cursor: "pointer" }}
       >
-        <img src={imageSrc} alt="" />
+        <LazyLoadImage effect="blur" src={imageSrc} alt={name + "image"} />
       </div>
       <div class="content">
         <h3>{name}</h3>
