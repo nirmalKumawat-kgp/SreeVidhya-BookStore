@@ -6,6 +6,7 @@ import WrapperComponent from "../components/WrapperComponent";
 import { UserState } from "../UserContext";
 import { handleAddToCart } from "../utils/helpers";
 import Styles from "./Book.module.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function Book() {
   const { authed } = UserState();
@@ -26,7 +27,7 @@ export default function Book() {
         {book && (
           <>
             <div className={Styles.imageContainer}>
-              <img src={book.bookImage} alt={`${book.name}`} />
+              <LazyLoadImage src={book.bookImage} alt={`${book.name}`} />
             </div>
             <div className={Styles.content}>
               <Typography variant="h2">{book.name}</Typography>

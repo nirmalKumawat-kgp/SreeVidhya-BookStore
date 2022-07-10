@@ -31,7 +31,7 @@ export default function CategoryBook({
         }}
         style={{ cursor: "pointer" }}
       >
-        <LazyLoadImage effect="blur" src={imageSrc} alt={name + "image"} />
+        <LazyLoadImage effect="blur" src={imageSrc} alt={name + "image"} placeholderSrc="/image/book-6.png" />
       </div>
       <div class="content">
         <h3>{name}</h3>

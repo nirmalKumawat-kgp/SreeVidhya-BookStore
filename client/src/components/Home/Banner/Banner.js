@@ -1,30 +1,10 @@
 import React, { useEffect } from "react";
 import "./Banner.css";
-import Swiper from "swiper";
+import { Autoplay } from "swiper";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { SwiperSlide, Swiper } from "swiper/react";
 
 export default function Banner() {
-  useEffect(() => {
-    var swiper = new Swiper(".books-slider", {
-      loop: true,
-      centeredSlides: true,
-      autoplay: {
-        delay: 9500,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        },
-      },
-    });
-  }, []);
-
   return (
     <section class="home" id="home">
       <div class="row">
@@ -41,26 +21,81 @@ export default function Banner() {
         </div>
 
         <div class="swiper books-slider">
-          <div class="swiper-wrapper">
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-1.png" alt="" />
-            </a>
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-2.png" alt="" />
-            </a>
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-3.png" alt="" />
-            </a>
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-4.png" alt="" />
-            </a>
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-5.png" alt="" />
-            </a>
-            <a href="/" class="swiper-slide">
-              <img src="/image/book-6.png" alt="" />
-            </a>
-          </div>
+          <Swiper
+            spaceBetween={150}
+            autoplay={{ delay: 1000, disableOnInteraction: false }}
+            modules={[Autoplay]}
+            className="mySwiper"
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              450: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            <SwiperSlide>
+              <a href="/">
+                <LazyLoadImage
+                  src="/image/DSC_0450.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/" class="swiper-slide">
+                <LazyLoadImage
+                  src="/image/DSC_0451.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/" class="swiper-slide">
+                <LazyLoadImage
+                  src="/image/DSC_0456.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/">
+                <LazyLoadImage
+                  src="/image/DSC_0442.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/" class="swiper-slide">
+                <LazyLoadImage
+                  src="/image/DSC_0447.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/" class="swiper-slide">
+                <LazyLoadImage
+                  src="/image/DSC_0449.jpeg"
+                  alt="banner_image"
+                  effect="blur"
+                />
+              </a>
+            </SwiperSlide>
+          </Swiper>
           <img src="image/stand.png" class="stand" alt="" />
         </div>
       </div>
